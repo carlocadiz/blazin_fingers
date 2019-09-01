@@ -1,17 +1,21 @@
 import React from 'react';
 import CurrentWord from './CurrentWord';
 import TypingBox from './TypingBox';
+import TotalPoints from './TotalPoints';
 
-import CountDown from './CountDown';
 
-const GameScreen = ({currentWord, loadWord}) => {
+
+const GameScreen = ({currentWord, loadWord, pointsTotal, totalPoints, totalWords}) => {
     return (
       <div className='tc'>
-      <CurrentWord currentWord={currentWord}/>
-      <CountDown initialTime={10}/>
-      <TypingBox
-         currentWord={currentWord}
-         loadWord={loadWord}/>
+        <CurrentWord currentWord={currentWord}/>
+
+        <TypingBox
+           currentWord={currentWord}
+           loadWord={loadWord}
+           pointsTotal={pointsTotal}/>
+        <TotalPoints totalPoints={totalPoints}
+                     totalWords={totalWords}/>
       </div>
     );
 }

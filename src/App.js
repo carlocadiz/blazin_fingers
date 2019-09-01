@@ -4,7 +4,7 @@ import './App.css';
 import randomWords from 'random-words';
 import StartGame from './components/StartGame';
 import GameScreen from './components/GameScreen';
-
+import CountDown from './components/CountDown';
 
 class App extends React.Component {
   constructor(props){
@@ -12,7 +12,9 @@ class App extends React.Component {
     this.state = {
       currentWord : '',
       playGame: false,
-      gamerTage: ''
+      gamerTage: '',
+      totalPoints: 0,
+      totalWords: -1
     }
   }
 
@@ -21,7 +23,8 @@ class App extends React.Component {
   }
   loadWord = () => {
     this.setState({
-      currentWord: randomWords()
+      currentWord: randomWords(),
+      totalWords: this.state.totalWords + 1
     })
   }
 
@@ -31,15 +34,26 @@ class App extends React.Component {
     })
   }
 
+  pointsTotal = (data) => {
+    this.setState({
+      totalPoints: this.state.totalPoints + data
+    });
+
+  }
+
   render () {
     return (
       <div>
       {this.state.playGame ?
-
+        <>
+          <CountDown initialTime={10}/>
           <GameScreen
              currentWord={this.state.currentWord}
-             loadWord={this.loadWord} />
-
+             loadWord={this.loadWord}
+             pointsTotal={this.pointsTotal}
+             totalPoints={this.state.totalPoints}
+             totalWords={this.state.totalWords}/>
+        </>
         : <StartGame loadGame={this.loadGame} />}
       </div>
     );

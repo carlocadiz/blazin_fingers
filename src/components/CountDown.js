@@ -17,7 +17,7 @@ class CountDown extends React.Component{
   }
 
   componentDidUpdate(){
-    if(this.state.timer === 1){
+    if(this.state.timer === 0){
       console.log("-------------------timer count down is leaking")
       clearInterval(this.interval);
       //this.props.onTimerElapsed()
@@ -31,7 +31,9 @@ class CountDown extends React.Component{
 
   render() {
     return (
-        <p style={this.props.style}> {this.state.timer} </p>
+      <div style={{backgroundColor:'white'}} className="br3 ba b--black-10 mv4 w-33 mw6 shadow-5 left">
+        <h1 style={this.props.style}> Time remaining ... {this.state.timer} </h1>
+      </div>
     )
   }
 }

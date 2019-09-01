@@ -4,7 +4,7 @@ const CurrentWord = ({currentWord}) => {
   return (
     <div>
       <h2>Please type ...</h2>
-      <h1>{ currentWord}</h1>
+      <h1 className="fw500">{ currentWord}</h1>
     </div>
   )
 }
