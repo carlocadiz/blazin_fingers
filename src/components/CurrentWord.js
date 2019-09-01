@@ -1,8 +1,6 @@
 import React from 'react';
 
 const CurrentWord = ({currentWord}) => {
-
-
   return (
     <div>
       <h2>Please type ...</h2>

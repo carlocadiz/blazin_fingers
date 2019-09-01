@@ -2,22 +2,18 @@ import React from 'react';
 import CurrentWord from './CurrentWord';
 import TypingBox from './TypingBox';
 
+import CountDown from './CountDown';
 
-class GameScreen extends React.Component {
-  constructor(props){
-    super(props);
-    }
-
-  render () {
-
-
+const GameScreen = ({currentWord, loadWord}) => {
     return (
       <div className='tc'>
-      <CurrentWord currentWord={this.props.currentWord}/>
-      <TypingBox />
+      <CurrentWord currentWord={currentWord}/>
+      <CountDown initialTime={10}/>
+      <TypingBox
+         currentWord={currentWord}
+         loadWord={loadWord}/>
       </div>
     );
- }
 }
 
 export default GameScreen;

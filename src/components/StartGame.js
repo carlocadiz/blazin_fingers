@@ -11,7 +11,7 @@ const StartGame = ({loadGame}) => {
               <legend className="f1 fw6 ph0 mh0 tc">Gamer Sign On</legend>
               <div className="mt3">
                 <label className="db fw6 lh-copy f6" htmlFor="gamer_tag">Gamer Tag</label>
-                <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                <input className="pa2 input-reset ba w-100"
                        type="text"
                        name="gamer_tag"
                        id="gamer_tag"

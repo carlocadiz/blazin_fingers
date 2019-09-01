@@ -5,6 +5,7 @@ import randomWords from 'random-words';
 import StartGame from './components/StartGame';
 import GameScreen from './components/GameScreen';
 
+
 class App extends React.Component {
   constructor(props){
     super(props);
@@ -16,6 +17,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.loadWord()
+  }
+  loadWord = () => {
     this.setState({
       currentWord: randomWords()
     })
@@ -30,7 +34,12 @@ class App extends React.Component {
   render () {
     return (
       <div>
-      {this.state.playGame ? <GameScreen currentWord={this.state.currentWord}/>
+      {this.state.playGame ?
+
+          <GameScreen
+             currentWord={this.state.currentWord}
+             loadWord={this.loadWord} />
+
         : <StartGame loadGame={this.loadGame} />}
       </div>
     );
