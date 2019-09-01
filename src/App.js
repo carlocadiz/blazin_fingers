@@ -2,14 +2,16 @@ import React from 'react';
 import './App.css';
 
 import randomWords from 'random-words';
-import StarGame from './StartGame';
+import StartGame from './components/StartGame';
+import GameScreen from './components/GameScreen';
 
 class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       currentWord : '',
-      playGame: false
+      playGame: false,
+      gamerTage: ''
     }
   }
 
@@ -19,12 +21,17 @@ class App extends React.Component {
     })
   }
 
+  loadGame = () => {
+    this.setState({
+      playGame: true
+    })
+  }
+
   render () {
-
-
     return (
       <div>
-        <StarGame />
+      {this.state.playGame ? <GameScreen currentWord={this.state.currentWord}/>
+        : <StartGame loadGame={this.loadGame} />}
       </div>
     );
  }
