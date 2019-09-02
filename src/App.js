@@ -20,13 +20,14 @@ class App extends React.Component {
       gamerTag: randomTag(),
       totalPoints: 0,
       totalWords: -1,
-      liveGame: true
+      liveGame: true,
+      finalTotal: 0
     }
   }
 
-  componentDidMount() {
-    this.loadWord()
-  }
+  // componentDidMount() {
+  //   this.loadWord()
+  // }
 
   loadWord = () => {
     this.setState({
@@ -39,6 +40,7 @@ class App extends React.Component {
     this.setState({
       playGame: true
     })
+    this.loadWord();
   }
 
   pointsTotal = (data) => {
@@ -51,7 +53,9 @@ class App extends React.Component {
   onTimerElapsed = () => {
     this.setState({
       liveGame: false,
-      currentWord: ''
+      currentWord: '',
+      finalTotal: this.state.totalPoints,
+      totalWords: -1
     })
   }
 
@@ -60,6 +64,24 @@ class App extends React.Component {
        gamerTag: event.target.value})
   }
 
+ onHandleQuit = () => {
+   this.setState({
+     playGame: false,
+     liveGame: true,
+     gamerTag: randomTag(),
+     totalPoints: 0,
+     totalWords: -1
+   })
+ }
+
+onHandlePlayAgain = () => {
+  this.setState({
+    liveGame: true,
+    totalWords: -1,
+    totalPoints: 0
+  })
+  this.loadWord();
+}
 
 
   render () {
@@ -78,7 +100,9 @@ class App extends React.Component {
                totalPoints={this.state.totalPoints}
                totalWords={this.state.totalWords}/>
             </>
-          : <NewGameModal totalPoints={this.state.totalPoints} />)
+          : <NewGameModal finalTotal={this.state.finalTotal}
+                          onHandleQuit={this.onHandleQuit}
+                          onHandlePlayAgain={this.onHandlePlayAgain}/>)
 
         : <StartGame loadGame={this.loadGame}
                      onTagChange={this.onTagChange}
