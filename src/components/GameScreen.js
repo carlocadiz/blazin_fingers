@@ -5,10 +5,11 @@ import TotalPoints from './TotalPoints';
 
 
 
-const GameScreen = ({currentWord, loadWord, pointsTotal, totalPoints, totalWords}) => {
+const GameScreen = ({gamerTag, currentWord, loadWord, pointsTotal, totalPoints, totalWords}) => {
     return (
       <div className='tc'>
-        <CurrentWord currentWord={currentWord}/>
+        <CurrentWord currentWord={currentWord}
+                     gamerTag={gamerTag}/>
 
         <TypingBox
            currentWord={currentWord}

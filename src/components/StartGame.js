@@ -1,7 +1,6 @@
 import React from 'react';
 
-const StartGame = ({loadGame}) => {
-
+const StartGame = ({loadGame, onTagChange, gamerTag}) => {
 
   return (
     <article style={{backgroundColor:'white'}} className="br3 ba b--black-10 mv4 w-50 mw6 shadow-5 center">
@@ -15,7 +14,8 @@ const StartGame = ({loadGame}) => {
                        type="text"
                        name="gamer_tag"
                        id="gamer_tag"
-                       placeholder='Enter gamer tag or play as guest'
+                       placeholder={`Enter gamer tag or play as ${gamerTag}`}
+                       onChange={(event) => onTagChange(event)}
                        />
               </div>
             </fieldset>

@@ -15,6 +15,7 @@ const onTextChange = (event) => {
     <input className="pa2 w-30"
            type="text"
            onChange={(event) => onTextChange(event)}
+           autoFocus
            />
     </div>
   )

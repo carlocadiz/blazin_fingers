@@ -5,22 +5,29 @@ import randomWords from 'random-words';
 import StartGame from './components/StartGame';
 import GameScreen from './components/GameScreen';
 import CountDown from './components/CountDown';
+import NewGameModal from './components/NewGameModal';
 
+const randomTag = () => {
+  return 'guest'+ Math.floor((Math.random()*400) + 1);
+
+}
 class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       currentWord : '',
       playGame: false,
-      gamerTage: '',
+      gamerTag: randomTag(),
       totalPoints: 0,
-      totalWords: -1
+      totalWords: -1,
+      liveGame: true
     }
   }
 
   componentDidMount() {
     this.loadWord()
   }
+
   loadWord = () => {
     this.setState({
       currentWord: randomWords(),
@@ -41,20 +48,41 @@ class App extends React.Component {
 
   }
 
+  onTimerElapsed = () => {
+    this.setState({
+      liveGame: false,
+      currentWord: ''
+    })
+  }
+
+  onTagChange = (event) => {
+     this.setState({
+       gamerTag: event.target.value})
+  }
+
+
+
   render () {
     return (
       <div>
       {this.state.playGame ?
-        <>
-          <CountDown initialTime={10}/>
-          <GameScreen
-             currentWord={this.state.currentWord}
-             loadWord={this.loadWord}
-             pointsTotal={this.pointsTotal}
-             totalPoints={this.state.totalPoints}
-             totalWords={this.state.totalWords}/>
-        </>
-        : <StartGame loadGame={this.loadGame} />}
+
+        (this.state.liveGame ?
+          <>
+            <CountDown initialTime={10} onTimerElapsed={this.onTimerElapsed}/>
+            <GameScreen
+               gamerTag={this.state.gamerTag}
+               currentWord={this.state.currentWord}
+               loadWord={this.loadWord}
+               pointsTotal={this.pointsTotal}
+               totalPoints={this.state.totalPoints}
+               totalWords={this.state.totalWords}/>
+            </>
+          : <NewGameModal totalPoints={this.state.totalPoints} />)
+
+        : <StartGame loadGame={this.loadGame}
+                     onTagChange={this.onTagChange}
+                     gamerTag={this.state.gamerTag}/>}
       </div>
     );
  }
