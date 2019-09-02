@@ -14,7 +14,7 @@ const StartGame = ({loadGame, onTagChange, gamerTag}) => {
                        type="text"
                        name="gamer_tag"
                        id="gamer_tag"
-                       placeholder={`Enter gamer tag or play as ${gamerTag}`}
+                       placeholder={gamerTag }
                        onChange={(event) => onTagChange(event)}
                        />
               </div>
