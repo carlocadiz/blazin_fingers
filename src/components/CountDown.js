@@ -30,7 +30,7 @@ class CountDown extends React.Component{
 
   render() {
     return (
-      <div style={{backgroundColor:'white'}} className= " measure ml4 br3 ba b--black-10 mv4 w-33 mw6 shadow-5 left tc">
+      <div style={{backgroundColor:'white'}} className= " pa3 center measure ml4 br3 ba b--black-10 mv4 w-35 mw6 shadow-5 left tc">
         <h1> Time remaining ... {this.state.timer} </h1>
       </div>
     )
