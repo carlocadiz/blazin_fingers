@@ -91,7 +91,7 @@ onHandlePlayAgain = () => {
 
         (this.state.liveGame ?
           <>
-            <CountDown initialTime={10} onTimerElapsed={this.onTimerElapsed}/>
+            <CountDown initialTime={60} onTimerElapsed={this.onTimerElapsed}/>
             <GameScreen
                gamerTag={this.state.gamerTag}
                currentWord={this.state.currentWord}
