@@ -7,12 +7,12 @@ const TotalPoints = ({currentWord, totalPoints, totalWords}) => {
     <table className="f6 w-20 mw8 center" cellspacing="0">
       <thead>
         <tr>
-          <th className="fw6 bb b--black-20 tl pb3 pr3 bg-white">Number of Words</th>
-          <th className="fw6 bb b--black-20 tl pb3 pr3 bg-white">Points</th>
+          <th className="fw6 bb b--black-20 tl pb3 pr3 bg-white tc pt3">Words</th>
+          <th className="fw6 bb b--black-20 tl pb3 pr3 bg-white tc pt3">Points</th>
 
         </tr>
       </thead>
-      <tbody className="lh-copy">
+      <tbody className="lh-copy mv3 center">
         <tr >
           <td className="fw6 pv3 pr3 bb b--black-20 tc">{totalWords}</td>
           <td className="fw6 pv3 pr3 bb b--black-20 tc">{totalPoints}</td>
